@@ -1,0 +1,52 @@
+---
+title: "My Shiny App"
+author: "Gautam"
+date: "4 February 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## App overview
+
+The application takes `name`, `date of birth`, `height (cm)` and `weight (kg)` of the user as input. It returns the user's `age`, the `weekday` of their birth and their `BMI`.  
+
+It also displays a BMI chart against which the user can check their BMI to see if they are in the normal range.  
+
+## App and Code
+
+Click [here](https://gautamp7.shinyapps.io/MyShinyApp/) to acces the Shiny web application deployed on shinyapps.io  
+
+Click [here](https://github.com/GautamP7/ShinyApp-Coursera) to access the Github repo containing the source code for the web application  
+
+## Sample output of the app
+
+```{r, message=FALSE, echo=TRUE, results='hide'}
+library(lubridate)
+dob <- as.Date("1989-01-01"); height <- 180; weight <- 72
+age <- as.period(interval(start = dob, end = Sys.Date()))$year
+day <- weekdays(dob)
+bmi <- weight / ((height / 100) ^ 2)
+print("Hi John")
+print(paste("Your age is ", age))
+print(paste("You were born on ", day))
+print(paste("Your BMI is ", bmi))
+```
+
+```{r, message=FALSE}
+library(lubridate)
+dob <- as.Date("1989-01-01")
+height <- 180
+weight <- 72
+age <- as.period(interval(start = dob, end = Sys.Date()))$year
+day <- weekdays(dob)
+bmi <- weight / ((height / 100) ^ 2)
+print("Hi John")
+print(paste("Your age is ", age))
+print(paste("You were born on ", day))
+print(paste("Your BMI is ", bmi))
+```
+
+## THE END
